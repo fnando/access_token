@@ -29,4 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry-meta'
   spec.add_development_dependency 'redis'
   spec.add_development_dependency 'dalli'
+  spec.add_development_dependency 'codeclimate-test-reporter'
 end

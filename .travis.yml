@@ -2,7 +2,11 @@ language: ruby
 cache: bundler
 sudo: false
 rvm:
-  - 2.2.2
+- 2.2.2
 services:
-  - redis-server
-  - memcached
+- redis-server
+- memcached
+addons:
+  code_climate:
+    repo_token:
+      secure: MVq0vDsOc4hUwE8MeenRi5WdZz5+mZSs8LJUj1k3jabjdyyxGpWNOoy5fvjP+MqYo0KXz+CtkQlSPOMrGrXB4IIHTz+WnJuZNHeXE9X6qk9dz5G2XyrrNernDjr6K/ybO5gw23KP39W3LiXxMSwapZBw/NcjTZz9uA3S+SXUFTlcIQmH7soXxYlRWuFWa8MoW4MBb35xyjIn2iv5WDoS+9OL7sWdsQMuxy0tJHNXmxXB5fJr4Kevzg2NZqbEvcd7tF1WMdd5EraYy/a7Rs2xxXR0lKGDM17XNDoTMOYdXwt/d5d19WUXMlvrVBVPGuaTsXvZi5IJ//74BBWzA3XP0s7y7MIHGBCRlh2Uie6RlKx6Z5zQG0HR3crOoimSlNMW1EeWtcJouuVlI7eQyKTdeKAhlRdd/LR4Ap4yyIrRdQQLB+jOkKkRsG0ZvdgDwYM34bOuMkYC4Nq+/BkfjZZD5L1EM9Z/hc2unEHBy+J0slyz13GK9HSo6a3Eg9w3bASZA1VgAnJaHARlNOIM0PEHHsKpk+dzkid9GjsZmsz/bP8U/n9DRw+SQqC2uhhdCGA4pVqTOLzGFRITS898Hl3j2UrvKHbLS8GaqtLbG3qXC04oXVmmt7vFDsZRbw+UUZa7D+mB+cwYUu6i+rr5NfKINHkuBF2l75La7d2gIdtmkqw=

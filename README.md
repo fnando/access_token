@@ -1,6 +1,8 @@
 # AccessToken
 
 [![Build Status](https://travis-ci.org/fnando/access_token.svg)](https://travis-ci.org/fnando/access_token)
+[![Code Climate](https://codeclimate.com/github/fnando/access_token/badges/gpa.svg)](https://codeclimate.com/github/fnando/access_token)
+[![Test Coverage](https://codeclimate.com/github/fnando/access_token/badges/coverage.svg)](https://codeclimate.com/github/fnando/access_token/coverage)
 
 A simple and easy-to-use access token generator.
 
