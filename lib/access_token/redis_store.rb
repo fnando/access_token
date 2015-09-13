@@ -7,10 +7,7 @@ class AccessToken
     end
 
     def set(key, value, ttl)
-      client.multi do
-        client.set(key, value)
-        client.expire(key, ttl)
-      end
+      client.setex(key, ttl, value)
     end
 
     def get(key)
