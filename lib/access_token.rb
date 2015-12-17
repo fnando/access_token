@@ -69,7 +69,7 @@ class AccessToken
 
     return unless data
     return unless fresh?(data[TIME_KEY])
-    return unless request_signature == data[SIGNATURE_KEY]
+    return unless secure_compare?(request_signature, data[SIGNATURE_KEY])
 
     data[ID_KEY]
   end
@@ -80,5 +80,14 @@ class AccessToken
 
   def fresh?(timestamp)
     timestamp > Time.now.to_i - ttl
+  end
+
+  def secure_compare?(a, b)
+     return false if a.blank? || b.blank? || a.bytesize != b.bytesize
+     l = a.unpack "C#{a.bytesize}"
+
+     res = 0
+     b.each_byte { |byte| res |= byte ^ l.shift }
+     res == 0
   end
 end
