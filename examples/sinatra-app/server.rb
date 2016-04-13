@@ -1,9 +1,9 @@
-require 'bundler/setup'
+require "bundler/setup"
 Bundler.require
 
 ActiveRecord::Base.establish_connection(
-  adapter: 'sqlite3',
-  database: 'sample.sqlite3'
+  adapter: "sqlite3",
+  database: "sample.sqlite3"
 )
 
 class User < ActiveRecord::Base
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   add_index :users, :email, unique: true
-  User.create!(email: 'john@example.com', password: 'test')
+  User.create!(email: "john@example.com", password: "test")
 end
 
 class BaseEndpoint < Sinatra::Application
@@ -29,7 +29,7 @@ class BaseEndpoint < Sinatra::Application
       @access_token ||= AccessToken.new(
         request: request,
         response: response,
-        secret: '220c6a866bff52edc0825ee5e15be8f02953764cb7a8d54ba44b46c26a7fa8867d8aa09cc11f23843d72819d98823248e1a6dcd52abc0783cace5de459dd43dd7d8da6313cbebacb475e099c0686d210cf51636800206a19526844ab8ced6af1906a9500',
+        secret: "220c6a866bff52edc0825ee5e15be8f02953764cb7a8d54ba44b46c26a7fa8867d8aa09cc11f23843d72819d98823248e1a6dcd52abc0783cace5de459dd43dd7d8da6313cbebacb475e099c0686d210cf51636800206a19526844ab8ced6af1906a9500",
         store: AccessToken::RedisStore.new
       )
     end
@@ -49,20 +49,20 @@ class BaseEndpoint < Sinatra::Application
   end
 
   before do
-    content_type 'application/json'
+    content_type "application/json"
   end
 end
 
 class ProfileEndpoint < BaseEndpoint
   before { authenticate! }
 
-  get '/profile' do
+  get "/profile" do
     current_user.to_json
   end
 end
 
 class AuthEndpoint < BaseEndpoint
-  post '/auth' do
+  post "/auth" do
     user = User.find_by_email(params[:email].to_s)
             .try(:authenticate, params[:password].to_s)
 

@@ -1,4 +1,4 @@
-require 'sinatra/base'
+require "sinatra/base"
 
 class User < ActiveRecord::Base
   has_secure_password
@@ -10,7 +10,7 @@ class BaseEndpoint < Sinatra::Application
       @access_token ||= AccessToken.new(
         request: request,
         response: response,
-        secret: '26aa6785e075754ea4f2f77d9edee74b1fd8218a',
+        secret: "26aa6785e075754ea4f2f77d9edee74b1fd8218a",
         store: AccessToken::RedisStore.new
       )
     end
@@ -29,12 +29,12 @@ class BaseEndpoint < Sinatra::Application
   end
 
   before do
-    content_type 'application/json'
+    content_type "application/json"
   end
 end
 
 class AuthEndpoint < BaseEndpoint
-  post '/auth' do
+  post "/auth" do
     user = User.find_by_email(params[:email].to_s)
             .try(:authenticate, params[:password].to_s)
 
@@ -49,7 +49,7 @@ class ProfileEndpoint < BaseEndpoint
     authenticate!
   end
 
-  get '/profile' do
+  get "/profile" do
     current_user.to_json
   end
 end

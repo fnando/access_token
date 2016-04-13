@@ -1,17 +1,17 @@
 class AccessToken
-  require 'parsel'
+  require "parsel"
 
-  require 'access_token/version'
-  require 'access_token/redis_store'
-  require 'access_token/memcached_store'
-  require 'access_token/null_store'
+  require "access_token/version"
+  require "access_token/redis_store"
+  require "access_token/memcached_store"
+  require "access_token/null_store"
 
-  BEARER_HEADER        = 'Bearer'.freeze
-  EXPIRES_HEADER       = 'Expires'.freeze
-  AUTHORIZATION_HEADER = 'HTTP_AUTHORIZATION'.freeze
-  TIME_KEY             = 'time'.freeze
-  ID_KEY               = 'id'.freeze
-  SIGNATURE_KEY        = 'signature'.freeze
+  BEARER_HEADER        = "Bearer".freeze
+  EXPIRES_HEADER       = "Expires".freeze
+  AUTHORIZATION_HEADER = "HTTP_AUTHORIZATION".freeze
+  TIME_KEY             = "time".freeze
+  ID_KEY               = "id".freeze
+  SIGNATURE_KEY        = "signature".freeze
   BEARER_REGEX         = /\ABearer (.*?)\z/
 
   # Set the HTTP request object.

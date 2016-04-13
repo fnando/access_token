@@ -1,17 +1,17 @@
-require 'codeclimate-test-reporter'
+require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
-require 'bundler/setup'
-require 'access_token'
-require 'minitest/utils'
-require 'minitest/autorun'
-require 'rack/test'
+require "bundler/setup"
+require "access_token"
+require "minitest/utils"
+require "minitest/autorun"
+require "rack/test"
 
-require 'redis'
-require 'dalli'
+require "redis"
+require "dalli"
 
-FileList['./test/support/**/*.rb'].each do |file|
+FileList["./test/support/**/*.rb"].each do |file|
   require file
 end
