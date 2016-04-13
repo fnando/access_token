@@ -1,8 +1,10 @@
 # AccessToken
 
-[![Build Status](https://travis-ci.org/fnando/access_token.svg)](https://travis-ci.org/fnando/access_token)
+[![Travis-CI](https://travis-ci.org/fnando/access_token.png)](https://travis-ci.org/fnando/access_token)
 [![Code Climate](https://codeclimate.com/github/fnando/access_token/badges/gpa.svg)](https://codeclimate.com/github/fnando/access_token)
 [![Test Coverage](https://codeclimate.com/github/fnando/access_token/badges/coverage.svg)](https://codeclimate.com/github/fnando/access_token/coverage)
+[![Gem](https://img.shields.io/gem/v/access_token.svg)](https://rubygems.org/gems/access_token)
+[![Gem](https://img.shields.io/gem/dt/access_token.svg)](https://rubygems.org/gems/access_token)
 
 A simple and easy-to-use access token generator.
 
@@ -11,7 +13,7 @@ A simple and easy-to-use access token generator.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'access_token'
+gem "access_token"
 ```
 
 And then execute:
@@ -41,7 +43,7 @@ class ApplicationController < ActionController::Base
     @current_user
   end
 
-  def authenticate!
+  def authenticate
     @current_user = User.find_by_id(access_token.resolve)
     return render(nothing: true, status: 401) unless current_user
     access_token.update(current_user)
@@ -63,7 +65,7 @@ class AuthController < ApplicationController
 end
 
 class ProfileController < ApplicationController
-  before_action :authenticate!
+  before_action :authenticate
 
   def show
     render json: current_user
@@ -71,8 +73,8 @@ class ProfileController < ApplicationController
 end
 
 Rails.application.routes.draw do
-  get '/profile', to: 'profile#show'
-  post '/auth', to: 'auth#create'
+  get "/profile", to: "profile#show"
+  post "/auth", to: "auth#create"
 end
 ```
 
